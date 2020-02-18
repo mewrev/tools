@@ -82,6 +82,7 @@ func main() {
 	g.Printf("\n")
 
 	// Run generate for each type.
+	g.Printf("enums:\n")
 	for _, typeName := range types {
 		g.generate(typeName)
 	}
@@ -344,7 +345,6 @@ func usize(n int) int {
 }
 
 func (g *Generator) outputEnums(typeName string, values []Value) {
-	g.Printf("enums:\n")
 	g.Printf("  %s:\n", snakeCase(typeName))
 	w := tabwriter.NewWriter(&g.buf, 0, 3, 1, ' ', 0)
 	for _, value := range values {
